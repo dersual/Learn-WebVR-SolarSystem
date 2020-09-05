@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Solar System</title>
+    <meta charset="utf-8" />
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="Inform/js/Planetinform.js"></script>
+    <script src="Inform/js/xbutton.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap"
+      rel="stylesheet"
+    /> 
+    <link rel="icon" href="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Ffavicon.ico?v=1598980710264" type="image/x-icon"/>
+  </head>
+  <body>
+    <a-scene vr-mode-ui="enabled: false;">
+      <a-ssets>
+        <img
+          src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fmars.jpg?v=1592693889275"
+        />
+
+        <audio
+          id="space-music"
+          src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fbensound-slowmotion.mp3?v=1589478314921"
+          preload="auto"
+        ></audio>
+        <img
+          id="x-img"
+          src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fx.png?v=1586913671661"
+          crossorigin="anonymous"
+        />
+        <img
+          src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fsol.jpg?v=1592674760627"
+        />
+        <img
+          id="Mercury.jpg"
+          src="https://cdn.glitch.com/09036eeb-fb6a-44a1-aca6-05d9c90a09c6%2FMecury.jpg?v=1581981"
+          crossorigin="anonymous"
+        />
+        <img
+          src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fsun.png?v=1586813808018"
+          crossorigin="anonymous"
+        />
+        <img
+          id="Venus.jpg"
+          src="https://cdn.glitch.com/09036eeb-fb6a-44a1-aca6-05d9c90a09c6%2FVenus.jpg?v=1581981528431"
+          crossorigin="anonymous"
+        />
+        <img
+          src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg"
+          crossorigin="anonymous"
+        />
+      </a-ssets>
+      <a-sky
+        src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg"
+      >
+      </a-sky>
+      <a-entity
+        camera=""
+        
+        look-controls=""
+        id="player"
+        orbit-controls="target: 0 1.6 -0.5;minDistance: 0.5; maxDistance: 280;  initialPosition: -5 5 20;zoomSpeed:.5"
+      >
+        <a-entity
+          animation__click="property: scale;
+                                     from: 0.1 0.1 0.1;
+                                     to: 5 5 5;
+                                     easing: easeInCubic;
+                                     dur: 150;
+                                     startEvents: click"
+          animation__clickreset="property:scale;
+                                             to: .01 0.1 0.1;
+                                             dur: 1;
+                                             startEvents: animationcomplete__click"
+          animation__fusing="property:scale;
+                                       from: 5 5 5;
+                                       to: 0.1 0.1 0.1;
+                                       easing: easeInCubic;
+                                       dur: 150;
+                                       startEvents: fusing"
+          cursor="rayOrigin: mouse"
+          raycaster="objects: .planet, #earth"
+        ></a-entity>
+      </a-entity>
+      <a-entity
+        camera=""
+       
+        look-controls=""
+        position="0 30 25"
+        rotation="-27.387 -3.6 0"
+        id="player2"
+      >
+        <a-entity
+          animation__click="property: scale;
+                                     from: 0.1 0.1 0.1;
+                                     to: 5 5 5;
+                                     easing: easeInCubic;
+                                     dur: 150;
+                                     startEvents: click"
+          animation__clickreset="property:scale;
+                                             to: .01 0.1 0.1;
+                                             dur: 1;
+                                             startEvents: animationcomplete__click"
+          animation__fusing="property:scale;
+                                       from: 5 5 5;
+                                       to: 0.1 0.1 0.1;
+                                       easing: easeInCubic;
+                                       dur: 150;
+                                       startEvents: fusing"
+          cursor="rayOrigin: mouse"
+          raycaster="objects:  #x"
+        ></a-entity>
+
+        <a-light light="type:ambient;intensity:.7"></a-light>
+        <a-image
+          visible="false"
+          position="1 1 -1"
+          scale=".04 .04 .04"
+          src="#x-img"
+          id="x"
+          exitinfo
+        ></a-image>
+      </a-entity>
+      <a-sound
+        src="#space-music"
+        loop="true"
+        volume="0.55"
+        autoplay="true" 
+     
+               ></a-sound>
+      <a-entity oculus-touch-controls="hand: left"></a-entity>
+      <a-entity oculus-touch-controls="hand: right"></a-entity>
+      <a-sphere
+        scale="8 8 8"
+        position="0 0 0"
+        src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fsol.jpg?v=1592674760627"
+        animation__spin="property: rotation; dur: 50000; loop: true;  to: 0 360 0;easing:linear;"
+        class="planet"
+        id="Sun"
+        light="type:ambient;intensity:.3;color:yellow"
+      >
+        <a-entity
+          animation__orbit="property: rotation;dur:40000;to:0 360 0;easing:linear;loop:true"
+        >
+          <a-sphere
+            scale=".09 .09 .09"
+            position="0 0 -4"
+            src="#Venus.jpg"
+            class="planet"
+            id="venus"
+            animation__turn="property: rotation;dur:40000;to:0 360 0;easing:linear;loop:true"
+            planetinfo="info: Venus \n Description \n The second planet from the Sun. Also it is named after the Roman of god of Love. Another fact is that it is Earth's sister planet. Even though it looks  beautiful, the planet's environment is very harsh. Its ground temperature is over 800 degrees F and its atmosphere is carbon dioxide and sulfuric acid. It's environment was caused by greenhouse gasses. \n
+                  Position in The Solar System \n 2nd Planet \n
+                  # Of Moons \n 0 \n \n Notable Moons \n No moons \n \n # Of Earth Days In A Year \n 225 Earth Days \n
+                  # Of Earth Hours In A Full Day \n 5,832 Hours 
+                
+                  Interesting Facts 
+                  Hottest Planet In the Solar System 
+                  Second Brightest Object In The Sky 
+                  Longest Day in the Solar System;
+height:1.7;infoposition:0 0 -1.09
+                   "
+          ></a-sphere>
+        </a-entity>
+        <a-entity
+          animation__orbit="property:rotation;to:0 360 0;easing:linear;dur:30000;loop:true"
+        >
+          <a-sphere
+            scale="0.05 0.05 0.05"
+            position="0 0 -2"
+            src="#Mercury.jpg"
+            animation__turn="property: rotation;dur:30000;to:0 360 0;easing:linear;loop:true"
+            material=""
+            geometry=""
+            rotation="0 58.21473617403191 0"
+            class="planet"
+            id="mercury"
+            planetinfo="infoposition:0 0 -1.19 ;info: Mercury \n Description \n Mercury is the closest planet to the sun, but it is not the hottest planet. It does have a very harsh enviroment. The atmosphere is very thin and temperatures vary from -180 degrees Celsius to 430 degrees Celsius. Mercury's geography is very rough with craters scattered around the planet. The name Mercury comes from the Roman God Mercury the messenger of the Gods. It is also known that it has the shortest years and longest days in the solar sytem. \n  
+                      Position in the Solar System \n First Planet \n \n # of Moons \n Moonless \n
+                      Notable Moons \n No moons. \n \n # of Earth Days In A Year \n 88 Earth Days \n
+                      # of Earth Hours In A Full Day \n Around 1,407 Hours \n
+                      Interesting Facts \n Mercury holds the title for shortest year. \n It holds the title for smallest planet.; 
+                      height:1.89;width:1.1
+                      "
+          ></a-sphere>
+        </a-entity>
+        <a-entity
+          animation__orbit="property:rotation;to:0 360 0; loop:true;dur:45000;easing:linear"
+        >
+          <a-sphere
+            scale="0.12 0.12 0.12"
+            position="0 0 -6"
+            src="https://cdn.glitch.com/09036eeb-fb6a-44a1-aca6-05d9c90a09c6%2FEarthOriginal.jpg?v=1581986297761"
+            class="planet"
+            id="earth"
+            planetinfo="info: Earth \n Description \n Our Home. The place where we live and the only life we know thrives. Our planet's official scientific name is Terra. It has oceans full of water and mountains that go up to the sky. It is a place that is home not to just us, but hundreds of thousands of species. \n
+                    Position in the Solar System \n Third Planet \n \n # of Moons \n 1 \n  
+                    Notable Moons \n The Moon/Luna \n \n # Of Earth Days In A Year \n 365 Earth Days \n
+                    # Of Earth Hours In A Full Day \n 23 Hours and 59 Minutes \n \n Interesting Facts \n The only place we know the contains life
+;height:1.45;infoposition:0 0 -1;"
+            animation__turn="property: rotation;dur:45000;to:0 360 0;easing:linear;loop:true"
+          >
+            <a-sphere
+             class="planet"         
+             position="0 1 -2.5" 
+             src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fmoon.jpg?v=1598995683915"  
+             scale="0.3 0.3 0.3"
+            ></a-sphere>
+          </a-sphere
+        ></a-entity>
+        <a-entity
+          animation__orbit="property: rotation;dur:50000;to:0 360 0;easing:linear;loop:true"
+        >
+          <a-sphere
+            animation__turn="property: rotation;dur:50000;to:0 360 0;easing:linear;loop:true"
+            src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fmars.jpg?v=1592693889275"
+            id="mars"
+            class="planet"
+            scale=".07 .07 .07"
+            position="0 0 -8"
+            planetinfo="width:1.1;height:1.95;infoposition:0 0 -1.185;info: 
+                      Mars \n Description \n Mars is the fourth planet in the Solar System closest to the Sun. Mars geography consists of deserts, mountains, craters, polar ice caps. The average temperature in Mars is -81 degrees fahrenheit. The name Mars comes from the Roman God of War. It's also nicknamed the Red Planet because of it's red surface. \n
+                      Position In The Solar System \n Fourth Planet \n \n # Of Moons \n Two Moons \n \n Notable Moons \n Deimos \n Phobos \n
+                      # Of Earth Days In A Year \n 687 Earth Days \n \n # Of Earth Hours In A Full Day \n 24 Hours and 37 min \n
+                      Interesting Facts \n It's believed that Mars used to have an atmosphere like Earth and the existence of polar caps infers that there was once water in Mars. \n Mars is the Home of the tallest mountain in the Solar System. \n Mars's weather mostly consist of huge dust storms.; 
+                      "
+          ></a-sphere>
+        </a-entity>
+
+        <a-entity
+          class="astroid"
+          scale="1.35 1.35 1.35"
+          position="0 0 0"
+          gltf-model="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fasteroides.glb?v=1541106805090"
+        ></a-entity>
+
+        <a-entity
+          animation__orbit="property: rotation;dur:60000;to:0 360 0;easing:linear;loop:true"
+        >
+          <a-sphere
+            class="planet"
+            id="jupiter"
+            scale=".5 .5 .5"
+            animation__turn="property: rotation;dur:60000;to:0 360 0;easing:linear;loop:true"
+            position="0 0 -16"
+            src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fjupiter.jpg?v=1593386210304"
+            planetinfo="infoposition:0 0 -1.3;height:3;width:1.19; 
+                      info:Jupiter 
+                      Description 
+                      Jupiter is the biggest planet in the Solar System. It is the first of the gas giants. Gas giants are planets that mainly contain gas. The planet's weather is extremely with winds going winds going 335 miles per hour (539 kilometers per hour). Another fact is that Jupiter has something called The Great Red Spot. The Great Red Spot is actually a large storm that has lasted for over 400 years. The name Jupiter comes from the Roman God of the sky. 
+                      
+                      Position In The Solar System
+                      Fifth Planet 
+                      
+                      # Of Moons 
+                      Around 79 Moons
+                      
+                      Notable Moons 
+                      Io
+                      Europa
+                      Callisto
+
+                      # Of Earth Days In A Year 
+                      4,333 Days
+                      
+                      # Of Earth Hours In A Full Day 
+                      9 Hours and 56 Min
+                      
+                      Interesting Facts 
+                      Biggest planet in solar system 
+                      The Great Red Spot is a century-old storm 
+                      Jupiter could've been a star 
+                      Made up mostly of hydrogen (H2) and helium (He). \n It also has the shortest day in the Solar System.;
+                      "
+          ></a-sphere>
+        </a-entity>
+        <a-entity
+          animation__turn="property: rotation;dur:65000;to:0 360 0;easing:linear;loop:true"
+          ><a-sphere
+            class="planet"
+            id="saturn"
+            planetinfo="width:1.1;height:2.1;infoposition: 0 0 -1.25; info: Saturn \n Description \n Saturn is the second largest planet in the solar system and is a gas giant like Jupiter. Saturn is known for it's large rings which is made of space dust, astroids, comets, and shattered moons. Saturn has the second shortest day in the solar solar system. The name Saturn comes from the Roman god of harvest. \n 
+          Position In Solar System \n Sixth Planet \n \n # Of Moons \n 82 \n \n Notable Moons \n Titan \n Enceladus \n 
+          # Of Earth Days In A Year \n 11,000 Earth Days \n \n # Of Earth Hours In A Full Day \n \n 10.7 Earth Hours \n 
+          Interesting Facts \n It has the largest rings in the Solar System \n One of it's moons, Titan could hold life because it has oceans of methane \n Saturn mostly contains hydrogen and helium. \n Saturn is less than water so if you put Saturn in a large enough body of water it would float;
+          "
+            scale=".4 .4 .4"
+            position="0 0 -22"
+            src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fsaturnmap.jpg?v=1541102148468"
+            animation__turn="property: rotation;dur:65000;to:0 360 0;easing:linear;loop:true"
+          >
+            <a-torus
+              geometry="primitive: torus; radius: 3.2; radiusTubular: 0.1;segmentsTubular: 50"
+              material="color: #57524A;"
+              rotation="90 0 0"
+              scale="1 1 0.1"
+            ></a-torus>
+            <a-torus
+              geometry="primitive: torus; radius: 2.4; radiusTubular: 0.2;segmentsTubular: 50"
+              material="color: #A29A87;"
+              rotation="90 0 0"
+              scale="1 1 0.1"
+            ></a-torus> </a-sphere
+        ></a-entity>
+        <a-entity
+          animation__orbit="property: rotation;dur:70000;to:0 360 0;easing:linear;loop:true"
+          ><a-sphere
+            id="uranus"
+            planetinfo="infoposition: 0 0 -1.35; info:Uranus \n Description \n Uranus is a very unique planet because it rotates on it's side. It rotates with a tilt of 97.77 degrees. Some people say it's like that because it was hit by a planet early on it's lifetime. Uranus is one of the two Ice Giant planets in the solar system. Most of it's mass is a hot dense liquid of 'icy' materials, and other materials like water, methane, and ammonia. Uranus also hase rings, but they are very faint. \n 
+          Position In Solar System \n 7th Planet \n \n # of Moons \n 27 Moons \n \n Notable Moons \n Puck \n Ariel \n Rosalind \n 
+          # of Earth Days In A Year \n 30,687 Earth Days \n \n # of Earth Hours In A Full Day \n 17 Hours and 13 Minutes \n  
+          Interesting Facts \n Uranus does have rings, but they are narrow an dark \n Like Venus it rotates east to west. No one really knows why Uranus rotates on its side, but some there some theories that it was hit by a planet early on it's lifetime \n The name Uranus comes from the primordial god of the sky;
+          height: 2.2;
+          width:1.15
+          ; "
+            class="planet"
+            src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Furanus.jpg?v=1594067303246"
+            position="0 0 -28"
+            animation__turn="property: rotation;dur:70000;to:0 360 0;easing:linear;loop:true"
+            scale=".37 .37 .37"
+          >
+            <a-entity
+              geometry="primitive: torus; radius: 1.5; radiusTubular: 0.01;segmentsTubular: 50"
+              material="color: #FFFFFF;"
+              rotation="-10 90 0"
+              scale="1 1 0.1"
+            ></a-entity> </a-sphere
+        ></a-entity>
+        <a-entity
+          animation__orbit="property: rotation;dur:75000;to:0 360 0;easing:linear;loop:true"
+          ><a-sphere 
+                 scale=".35 .35 .35"
+                     class="planet"    
+                   id="neptune"
+                  src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fneptunemap.jpg?v=1541102137305"
+              position="0 0 -34" 
+                 planetinfo="infoposition:0 0 -1.5; 
+          info: Neptune \n Description \n Neptune is the farthest planet from the sun and is one of the two Ice giant planets in the solar system. Neptune also has rings. It has a storm that is similiar to the Great Red Spot in Jupiter called the Great Dark Spot. Neptune has one of the harshest weather with winds up to 1,200 mph. The temperatures go down to -200 degrees Celcius, which is the coldest average temperature in the solar system. Most of Neptune are oceans of ammonia and methane and a surface made of a hot, dense fluid of icy materials. The name Neptune comes from the Roman god of the sea. \n 
+          Position In The Solar System \n Eigth Planet \n \n # of Moons \n 14 Moons \n \n Notable Moons \n Triton \n \n  # of Earth Days In A Year \n 60,190 Earth Days \n # Of Earth Hours In A Full Day \n 16 Hours \n 
+          Interesting Facts \n Neptune has the coldest average temperature in entire solar system \n Neptune also has rings and is the smallest of all the gas giants in the solar system \n Neptune's Great Dark Spot has actually vanished and now there is another storm called up in Neptune's Northerm hemisphere \n It gets the blue color because it's atmosphere absorbs all the red light, but reflects all the blue light back into space;
+          height:2.5;width:1.2;
+          "    
+                     >
+           <a-entity  geometry="primitive: torus; radius: 2; radiusTubular: 0.01;segmentsTubular: 50"
+                        material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+                    <a-entity  geometry="primitive: torus; radius: 1.7; radiusTubular: 0.05;segmentsTubular: 50"
+                        material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+                    <a-entity  geometry="primitive: torus; radius: 1.3; radiusTubular: 0.01;segmentsTubular: 50"
+                        material="color: #FFFFFF;opacity: 0.8" rotation="90 0 0" scale="1 1 0.1"></a-entity>
+          </a-sphere
+        ></a-entity>
+      </a-sphere>
+      <!---Orbital--->
+      <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="8"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+      <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="16"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+      <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="24"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+      <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="32"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+      <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="64"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+      <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="88"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+      <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="112"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+    <a-torus
+        radius-tubular="0.01"
+        segments-tubular="50"
+        opacity="0.3"
+        radius="136"
+        rotation="90 0 0"
+        scale="2 2 .1"
+      ></a-torus>
+    </a-scene>
+     
+  </body>
+</html>
