@@ -29,7 +29,7 @@ AFRAME.registerComponent("exitinfo", {
           el.object3D.position.set(0.209, 0.37, -0.5);
           break;
         case "Jupiter":
-          el.object3D.position.set(0.21, 0.39, -0.5);
+          el.object3D.position.set(0.2, 0.39, -0.5);
           break;
         case "Saturn":
           el.object3D.position.set(0.2, 0.39, -0.5);
