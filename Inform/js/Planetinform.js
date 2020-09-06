@@ -3,7 +3,7 @@ AFRAME.registerComponent("planetinfo", {
   schema: {
     width: { type: "number", default: 1 },
     height: { type: "number", default: 1.3 },
-    color: { type: "color", default: "#054a2d" },
+    color: { type: "color", default: "#d1d1d1" },
     info: { type: "string", default: "" },
     infocolor: { type: "color", default: "#0de01f" },
     infoposition: { type: "vec3" }
@@ -20,7 +20,10 @@ AFRAME.registerComponent("planetinfo", {
     planet.play();
     var material = new THREE.MeshStandardMaterial({
       color: data.color,
-      side: THREE.DoubleSide
+      side: THREE.DoubleSide,
+      transparent: true,
+      alphaTest: 0.5,
+      opacity: 0.5
     });
 
     function createInfo() {
@@ -37,7 +40,7 @@ AFRAME.registerComponent("planetinfo", {
         value: data.info,
         font: "https://cdn.aframe.io/fonts/SourceCodePro.fnt",
         color: data.infocolor,
-        height:"auto"
+        width: "auto"
       });
       player2.appendChild(info);
     }
@@ -48,7 +51,6 @@ AFRAME.registerComponent("planetinfo", {
     });
 
     el.addEventListener("mouseenter", function(event) {
-     
       planet.pause();
       el.object3D.scale.add(a);
     });
