@@ -20,10 +20,10 @@ AFRAME.registerComponent("exitinfo", {
           el.object3D.position.set(0.23, 0.34, -0.5);
           break;
         case "Venus":
-          el.object3D.position.set(0.209, 0.37, -0.5);
+          el.object3D.position.set(0.209, 0.365, -0.5);
           break;
         case "Mars":
-          el.object3D.position.set(0.21, 0.4, -0.5);
+          el.object3D.position.set(0.23, 0.39, -0.5);
           break;
         case "Mercury":
           el.object3D.position.set(0.209, 0.37, -0.5);
@@ -33,12 +33,12 @@ AFRAME.registerComponent("exitinfo", {
           break;
         case "Saturn":
           el.object3D.position.set(0.2, 0.39, -0.5);
-      break; 
-        case "Uranus": 
-          el.object3D.position.set(0.199,0.39,-0.5)
-      break;
-        case "Neptune": 
-          el.object3D.position.set(0.18,0.39,-0.5); 
+          break;
+        case "Uranus":
+          el.object3D.position.set(0.195, 0.39, -0.5);
+          break;
+        case "Neptune":
+          el.object3D.position.set(0.18, 0.39, -0.5);
           break;
       }
     }
@@ -67,14 +67,14 @@ AFRAME.registerComponent("exitinfo", {
       var xpos = "Saturn";
       changeXpos(xpos);
     });
- planets[7].addEventListener("click", function() {
+    planets[7].addEventListener("click", function() {
       var xpos = "Uranus";
       changeXpos(xpos);
-    }); 
- planets[8].addEventListener("click",function(){ 
- var xpos = "Neptune" 
- changeXpos(xpos)
- })
+    });
+    planets[8].addEventListener("click", function() {
+      var xpos = "Neptune";
+      changeXpos(xpos);
+    });
     el.addEventListener("click", function exit(info) {
       var info = document.querySelector("#info");
 
