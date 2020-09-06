@@ -3,7 +3,7 @@ AFRAME.registerComponent("planetinfo", {
   schema: {
     width: { type: "number", default: 1 },
     height: { type: "number", default: 1.3 },
-    color: { type: "color", default: "#145378" },
+    color: { type: "color", default: "#054a2d" },
     info: { type: "string", default: "" },
     infocolor: { type: "color", default: "#0de01f" },
     infoposition: { type: "vec3" }
@@ -36,7 +36,8 @@ AFRAME.registerComponent("planetinfo", {
       info.setAttribute("text", {
         value: data.info,
         font: "https://cdn.aframe.io/fonts/SourceCodePro.fnt",
-        color: data.infocolor
+        color: data.infocolor,
+        height:"auto"
       });
       player2.appendChild(info);
     }
