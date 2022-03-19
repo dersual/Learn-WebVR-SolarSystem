@@ -10,11 +10,7 @@
 2.  Click on planets to learn about them.
 ![Aframe Click](https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fd.JPG?v=1599336562324)
 
-## More Solar System like projects that I liked
-
-[Solar System](http://vrspace.jmvisualcreativity.es/) by Jose Manuel
-
-## Stuff that helped me
+## Assets that helped me
 
 Starter Aframe Animated
 [Link if you want to create a solar system](https://glitch.com/~starter-aframe-animated)
