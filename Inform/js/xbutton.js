@@ -1,5 +1,5 @@
 AFRAME.registerComponent("exitinfo", {
-  init: function() {
+  init: function () {
     var el = this.el;
     var planets = [
       document.querySelector("#earth"),
@@ -10,7 +10,7 @@ AFRAME.registerComponent("exitinfo", {
       document.querySelector("#saturn"),
       document.querySelector("#jupiter"),
       document.querySelector("#uranus"),
-      document.querySelector("#neptune")
+      document.querySelector("#neptune"),
     ];
 
     var xpos;
@@ -43,35 +43,35 @@ AFRAME.registerComponent("exitinfo", {
       }
     }
 
-    planets[0].addEventListener("click", function() {
+    planets[0].addEventListener("click", function () {
       var xpos = "Earth";
       changeXpos(xpos);
     });
-    planets[1].addEventListener("click", function() {
+    planets[1].addEventListener("click", function () {
       var xpos = "Venus";
       changeXpos(xpos);
     });
-    planets[4].addEventListener("click", function() {
+    planets[4].addEventListener("click", function () {
       var xpos = "Mars";
       changeXpos(xpos);
     });
-    planets[3].addEventListener("click", function() {
+    planets[3].addEventListener("click", function () {
       var xpos = "Mercury";
       changeXpos(xpos);
     });
-    planets[6].addEventListener("click", function() {
+    planets[6].addEventListener("click", function () {
       var xpos = "Jupiter";
       changeXpos(xpos);
     });
-    planets[5].addEventListener("click", function() {
+    planets[5].addEventListener("click", function () {
       var xpos = "Saturn";
       changeXpos(xpos);
     });
-    planets[7].addEventListener("click", function() {
+    planets[7].addEventListener("click", function () {
       var xpos = "Uranus";
       changeXpos(xpos);
     });
-    planets[8].addEventListener("click", function() {
+    planets[8].addEventListener("click", function () {
       var xpos = "Neptune";
       changeXpos(xpos);
     });
@@ -82,5 +82,5 @@ AFRAME.registerComponent("exitinfo", {
       el.object3D.visible = false;
       document.querySelector("#player").setAttribute("camera", "active", true);
     });
-  }
+  },
 });
