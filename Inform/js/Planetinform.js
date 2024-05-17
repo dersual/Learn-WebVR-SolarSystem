@@ -13,6 +13,7 @@ AFRAME.registerComponent("planetinfo", {
     var el = this.el;
     let x = document.querySelector("#x");
     let data = this.data;
+    
     var geometry = new THREE.PlaneBufferGeometry(data.width, data.height);
     var a = new THREE.Vector3(0.25, 0.25, 0.25);
     var player2 = document.querySelector("#player2");
@@ -30,7 +31,6 @@ AFRAME.registerComponent("planetinfo", {
       var player2 = document.querySelector("#player2");
       player2.setAttribute("camera", "active", true);
       var info = document.createElement("a-entity");
-
       info.id = "info";
       info.setAttribute("class", "planetInfo");
       info.setObject3D("mesh", new THREE.Mesh(geometry, material));

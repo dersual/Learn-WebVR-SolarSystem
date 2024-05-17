@@ -21,7 +21,7 @@
     />
   </head>
   <body>
-    <a-scene vr-mode-ui="enabled: false;">
+    <a-scene   vr-mode-ui="enabled: false;">
       <a-ssets>
         <img
           src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fmars.jpg?v=1592693889275"
@@ -60,14 +60,14 @@
         />
       </a-ssets>
       <a-sky
-        src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg"
+        src="https://cdn.glitch.global/16b71302-1825-425d-9ad8-fd3ac40411b2/space_background.jpg?v=1715931797804"
       >
       </a-sky>
       <a-entity
         camera=""
         look-controls=""
         id="player"
-        orbit-controls="target: 0 1.6 -0.5;minDistance: 0.5; maxDistance: 280;  initialPosition: -5 5 20;zoomSpeed:.5"
+        orbit-controls="target: 0 1.6 -0.5;minDistance: 0.28; maxDistance: 280;  initialPosition: -5 5 20;zoomSpeed:.5"
       >
         <a-entity
           animation__click="property: scale;
@@ -137,6 +137,8 @@
       ></a-sound>
       <a-entity oculus-touch-controls="hand: left"></a-entity>
       <a-entity oculus-touch-controls="hand: right"></a-entity>
+      <a-light light="type:ambient;intensity:0.25;color:yellow"></a-light>
+      <a-light light="type:point;intensity:0.5;color:white;castShadow:true"></a-light>
       <a-sphere
         scale="8 8 8"
         position="0 0 0"
@@ -144,7 +146,7 @@
         animation__spin="property: rotation; dur: 50000; loop: true;  to: 0 360 0;easing:linear;"
         class="planet"
         id="Sun"
-        light="type:ambient;intensity:.3;color:yellow"
+      
       >
         <a-entity
           animation__orbit="property: rotation;dur:40000;to:0 360 0;easing:linear;loop:true"
@@ -167,7 +169,8 @@
                   Longest Day in the Solar System;
 height:1.7;infoposition:0 0 -1.09
                    "
-          ></a-sphere>
+           shadow="cast:true;receive:true"
+                    ></a-sphere>
         </a-entity>
         <a-entity
           animation__orbit="property:rotation;to:0 360 0;easing:linear;dur:30000;loop:true"
@@ -189,7 +192,8 @@ height:1.7;infoposition:0 0 -1.09
                       Interesting Facts \n Mercury holds the title for shortest year. \n It holds the title for smallest planet.; 
                       height:1.89;width:1.1
                       "
-          ></a-sphere>
+           shadow="cast:true;receive:true"
+                    ></a-sphere>
         </a-entity>
         <a-entity
           animation__orbit="property:rotation;to:0 360 0; loop:true;dur:45000;easing:linear"
@@ -206,13 +210,15 @@ height:1.7;infoposition:0 0 -1.09
                     # Of Earth Hours In A Full Day \n 23 Hours and 59 Minutes \n \n Interesting Facts \n The only place we know the contains life
 ;height:1.45;infoposition:0 0 -1;"
             animation__turn="property: rotation;dur:45000;to:0 360 0;easing:linear;loop:true"
-          >
+           shadow="cast:true;receive:true"
+                    >
             <a-sphere
               class="planet"
               position="0 1 -2.5"
               src="https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fmoon.jpg?v=1598995683915"
               scale="0.3 0.3 0.3"
-            ></a-sphere> </a-sphere
+             shadow="cast:true;receive:true"
+                      ></a-sphere> </a-sphere
         ></a-entity>
         <a-entity
           animation__orbit="property: rotation;dur:50000;to:0 360 0;easing:linear;loop:true"
@@ -230,7 +236,8 @@ height:1.7;infoposition:0 0 -1.09
                       # Of Earth Days In A Year \n 687 Earth Days \n \n # Of Earth Hours In A Full Day \n 24 Hours and 37 min \n
                       Interesting Facts \n It's believed that Mars used to have an atmosphere like Earth and the existence of polar caps infers that there was once water in Mars. \n Mars is the Home of the tallest mountain in the Solar System. \n Mars's weather mostly consist of huge dust storms.; 
                       "
-          ></a-sphere>
+            shadow="cast:true;receive:true"
+                    ></a-sphere>
         </a-entity>
 
         <a-entity
@@ -238,7 +245,8 @@ height:1.7;infoposition:0 0 -1.09
           scale="1.35 1.35 1.35"
           position="0 0 0"
           gltf-model="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fasteroides.glb?v=1541106805090"
-        ></a-entity>
+           shadow="cast:true;receive:true"
+                  ></a-entity>
 
         <a-entity
           animation__orbit="property: rotation;dur:60000;to:0 360 0;easing:linear;loop:true"
@@ -278,7 +286,8 @@ height:1.7;infoposition:0 0 -1.09
                       Jupiter could've been a star 
                       Made up mostly of hydrogen (H2) and helium (He). \n It also has the shortest day in the Solar System.;
                       "
-          ></a-sphere>
+           shadow="cast:true;receive:true"
+                    ></a-sphere>
         </a-entity>
         <a-entity
           animation__turn="property: rotation;dur:65000;to:0 360 0;easing:linear;loop:true"
@@ -294,19 +303,22 @@ height:1.7;infoposition:0 0 -1.09
             position="0 0 -22"
             src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fsaturnmap.jpg?v=1541102148468"
             animation__turn="property: rotation;dur:65000;to:0 360 0;easing:linear;loop:true"
-          >
+           shadow="cast:true;receive:true"
+                     >
             <a-torus
               geometry="primitive: torus; radius: 3.2; radiusTubular: 0.1;segmentsTubular: 50"
               material="color: #57524A;"
               rotation="90 0 0"
               scale="1 1 0.1"
-            ></a-torus>
+               shadow="cast:true;receive:true"
+                     ></a-torus>
             <a-torus
               geometry="primitive: torus; radius: 2.4; radiusTubular: 0.2;segmentsTubular: 50"
               material="color: #A29A87;"
               rotation="90 0 0"
               scale="1 1 0.1"
-            ></a-torus> </a-sphere
+               shadow="cast:true;receive:true"
+                     ></a-torus> </a-sphere
         ></a-entity>
         <a-entity
           animation__orbit="property: rotation;dur:70000;to:0 360 0;easing:linear;loop:true"
