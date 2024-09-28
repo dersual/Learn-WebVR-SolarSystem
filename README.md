@@ -1,6 +1,6 @@
 # Learn: WebVR SolarSystem
 
-[An interactive Webvr created with Aframe where you can learn about the planets.](https://lightnindrummer.github.io/Learn-WebVR-SolarSystem/)
+[An interactive Webvr created with Aframe where you can learn about the planets.](https://dersual.github.io/Learn-WebVR-SolarSystem/)
 ![Image Of Solar System Aframe](https://cdn.glitch.com/16b71302-1825-425d-9ad8-fd3ac40411b2%2Fsolar-system-pic.JPG?v=1599334526758)
 
 **Quick Guide on how this works** 
